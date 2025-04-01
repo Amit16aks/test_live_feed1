@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="data"></div>
+    <script>
+      function fetchData() {
+        fetch('https://sheets.googleapis.com/v4/spreadsheets/10BnSwdbB6AjmaClteTKU0CyVdceW9G-CGO2mNmlF6ZE/values/Top ALS Summary?key=AIzaSyBCahc2sl8MNXkbVcdTW1ahZ0nHjZRfiQA')
+          .then(response => response.json())
+          .then(data => {
+            document.getElementById('data').innerText = JSON.stringify(data.values);
+          })
+          .catch(error => console.error('Error:', error));
+      }
+      fetchData();
+      setInterval(fetchData, 5000); // Every 5 seconds
+    </script>
+  </body>
+</html>
